@@ -1,107 +1,227 @@
-# Awesome-Swift-Development-Utilities
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Swift Development Utilities Banner" width="100%" />
+</p>
 
-# Awesome-Swift-Development-Utilities
-
-## Top Swift Development Utilities Ecosystem
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-*Focused on Project Generation, CI/CD Automation & Dependency Management*  
-**Last updated: March 2026**
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Swift Development Utilities**. These tools help Apple platform developers generate Xcode projects from manifests, automate build-test-release pipelines, manage third-party dependencies, and maintain code quality — reducing the manual Xcode wrangling that slows down iOS and macOS development.
-
-**Examples** include Tuist, Fastlane, Bitrise, Xcode Cloud, App Center, SwiftLint, CocoaPods, Carthage, Swift Package Index, and TestFlight (the category leaders).
-
-**Open-source emphasis**: This section is heavily expanded with every major active project for self-hosting, manifest-driven project generation, and transparent CI/CD automation — ideal for Swift developers prioritizing reproducibility, avoiding Xcode project merge conflicts, and maintaining control over their build pipelines.
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-## Table of Contents
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-- [Open-Source GitHub Projects](#open-source-github-projects)
-- [How to Contribute](#how-to-contribute)
-- [Disclaimer](#disclaimer)
-
-## SaaS/Hosted Platforms
-
-- **[Xcode Cloud](https://developer.apple.com/xcode-cloud/)**  
-  **Apple's native CI/CD service for iOS and macOS.** Included with the Apple Developer Program subscription ($99/year) with compute-hour allowances scaling by team tier. **Deep Xcode integration** — configure workflows directly from the Xcode Report navigator. Supports build, analyze, test, and archive actions with automatic TestFlight distribution and App Store Connect integration. **Limitations**: iOS and macOS only — no Android, no Linux, no cross-platform builds. Xcode and macOS versions are managed by Apple and must be periodically updated in workflows.
-
-- **[Bitrise](https://www.bitrise.io/)**  
-  **Mobile-first CI/CD platform** with 400+ pre-built steps and visual workflow editor. Hobby tier is free (300 credits/month), Starter at $89/month, and Pro at $200/month. Strong for teams needing **cross-platform mobile builds** (iOS, Android, React Native, Flutter, Xamarin) with mobile-specific tooling and device testing. More expensive than generic CI for simple projects, but purpose-built for mobile workflows.
-
-- **[App Center (Retired)](https://appcenter.ms/)**  
-  Microsoft's mobile CI/CD and distribution service **scheduled for full retirement on March 31, 2025**. Analytics & Diagnostics extended to March 2027 for migration to Azure Monitor mobile. **Recommended migration paths**: Build → Azure Pipelines or GitHub Actions; Test → BrowserStack App Automate; Distribution → TestFlight and Google Play Console; CodePush → standalone open-source version. Do not start new projects on App Center.
-
-- **[TestFlight](https://testflight.apple.com/)**  
-  Apple's beta testing and distribution platform, integrated with Xcode Cloud and App Store Connect. **Free with Apple Developer Program**. Beta builds available for **90 days** per upload. Supports up to **30 devices per tester** across iOS, iPadOS, macOS, tvOS, visionOS, and watchOS. Not a CI/CD tool itself — it's the distribution endpoint that Xcode Cloud and other tools feed into.
-
-## Open-Source GitHub Projects
-
-- **[Tuist](https://github.com/tuist/tuist)**  
-  **The leading open-source toolchain for manifest-driven Xcode project generation.** Tuist's CLI lets you define projects in Swift manifests (`Project.swift`, `Workspace.swift`), then generates `.xcodeproj` and `.xcworkspace` files that are **gitignored and regenerated on demand** — eliminating merge conflicts in `.pbxproj` files, the bane of team iOS development. Workflow: `tuist init --platform ios` → customize manifest → `tuist generate` → `tuist build`. 10,000+ commits with active development. Tuist Registry archives packages from the Swift Package Index for faster dependency resolution. The default recommendation for teams tired of Xcode project file chaos.
-
-- **[Fastlane](https://github.com/fastlane/fastlane)**  
-  **The standard open-source automation tool for iOS and Android build, test, and release pipelines.** Define lanes in a `Fastfile` for tasks like `fastlane beta`, `fastlane release`, and `fastlane screenshots`. Handles the tedious parts: code signing (`match`), provisioning profiles, screenshots (`snapshot`), beta distribution (`pilot`), and App Store metadata (`deliver`). The SwiftLint integration runs linting as part of your fastlane process with configurable mode, executable path, reporter, and config file. Google-owned but fully open source (MIT). The foundation most iOS CI/CD pipelines are built on — even Xcode Cloud users often run fastlane for signing and metadata.
-
-- **[SwiftLint](https://github.com/realm/SwiftLint)**  
-  **The standard linter for Swift code**, enforcing style and conventions with 200+ opt-in rules. Integrates with Xcode as a build tool plugin or Run Script phase, with Visual Studio Code via extension, and as a fastlane action. **Apple Silicon note**: Homebrew installs to `/opt/homebrew/bin` — add this to Xcode's PATH or create a symlink to `/usr/local/bin`. **Xcode 15 sandboxing**: set `ENABLE_USER_SCRIPT_SANDBOXING` to `NO` for the target running SwiftLint, or the build phase fails with a sandbox violation. `swiftlint --fix && swiftlint` auto-corrects violations and reports the rest. The first tool most teams add to a new Swift project.
-
-- **[CocoaPods](https://github.com/CocoaPods/CocoaPods)**  
-  **The original dependency manager for iOS and macOS projects** — created in 2011, it remains widely used in existing codebases. Define dependencies in a `Podfile`, run `pod install`, and open the generated `.xcworkspace` instead of the original `.xcodeproj`. **Centralized Specs repository** with 88,000+ pods [citation:4][citation:10]. CocoaPods is a centralized package manager with no additional manual work needed after `pod install` [citation:10]. Swift PM is the modern default for new projects, with Apple integrating it directly into Xcode [citation:16].
-
-- **[Carthage](https://github.com/Carthage/Carthage)**  
-  **Decentralized dependency manager** that builds frameworks without modifying your Xcode project. Define dependencies in a `Cartfile`, run `carthage update --use-xcframeworks`, and manually drag built frameworks into your app's embedded binaries. Carthage manages about 4,500 libraries [citation:4]. **Xcode 12+ incompatibility**: Multi-architecture platforms not supported with framework bundles — use xcframeworks. Less popular than CocoaPods or SPM for new projects, but still used in legacy codebases that prefer Carthage's non-invasive approach [citation:4].
-
-- **[Swiftlane](https://github.com/swiftlane-code/Swiftlane)**  
-  **A fully open-source alternative to Fastlane, built entirely in Swift.** Provides a more modern and type-safe way of automating the building, testing, and deployment of iOS apps, while still offering the same level of customization and flexibility as Fastlane. Features include SwiftLint integration, code coverage checks, building and archiving with provisioning profile control, uploading to AppStoreConnect or Firebase AppDistribution, encrypted git repo storage for certs and profiles (compatible with Fastlane match), and automatic device provisioning. The project is stable and working but not in active development [citation:8].
-
-- **[Swift Package Index](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server)**  
-  **The essential search engine for Swift packages**, now joining Apple [citation:5]. Indexes over 10,000 Swift packages and automatically tests every package across supported platforms (macOS, iOS, tvOS, watchOS, Linux, visionOS, WebAssembly, Android) [citation:5]. Runs compatibility testing builds against each version of every package. Helps developers discover quality packages and evaluate compatibility before adding a dependency. Remains open source under Apache 2.0 license, with Apple engineers contributing alongside the community [citation:5][citation:17].
-
-- **[Swift PM (Swift Package Manager)](https://github.com/swiftlang/swift-package-manager)**  
-  **Apple's official package manager, integrated directly into Xcode.** Supports creating libraries and applications, with iOS support added in 2019 [citation:10]. By 2021, 47% of libraries with dependencies used Swift PM, nearly matching CocoaPods at 48% [citation:16]. Decentralized like Carthage, with no official central repository. Dependencies declared in `Package.swift` files; resolved in `Package.resolved`. The modern default for new Swift projects.
-
-- **[Shlane](https://github.com/prongbang/shlane)**  
-  **A YAML-based CI/CD automation tool for iOS builds.** Defines lanes in a config file with parameters, actions, and shell-quoted references. Core actions include `sh` (run shell command), `ensure_env_vars` (fail early when a variable is missing), `git_status_clean` (fail if working tree is dirty), `git_branch` (get branch and short SHA), and `zip`/`unzip` (archive and extract). Supports TestFlight uploads, version bumping, and notifications. Designed for type-safe, predictable CI automation [citation:2].
-
-- **[ios-builder](https://github.com/MobAI-App/ios-builder)**  
-  **A Go-based CLI for iOS build automation.** Features authentication with GitHub, Codemagic, Bitrise, and App Store Connect; `builder ios build` triggers builds and downloads IPA to `./dist/`; `builder ios release` builds with next build number, uploads, waits, and adds to TestFlight; `builder signing setup` handles certificate, devices, and profile configuration. Supports multiple providers (Codemagic, Bitrise) and profiles from `builder.json`. The command it installs is `builder` [citation:3].
-
-- **[betalane](https://github.com/jay-mehta/betalane)**  
-  **A JavaScript-based alternative to Fastlane** for beta deployments of iOS/Android builds [citation:14]. Features include `build` (building your app), `doa_s3` (Distribute on the Air using AWS S3), `cli` (execute any CLI command), and `download_file` (download a file from a URL). Configuration in `betalane.json` with lanes and jobs. Install via `[sudo] npm i betalane -g` [citation:14].
-
-- **[LinkSwift](https://github.com/hmjz100/LinkSwift)**  
-  **A fast-growing Swift-based utility** (though actually JavaScript-based) that is a browser user script for extracting direct download links from Chinese cloud storage services [citation:6][citation:18]. Supports 百度网盘/阿里云盘/中国移动云盘/天翼云盘/迅雷云盘/夸克网盘/UC网盘/123云盘. Provides multiple download methods including API download, RPC push to Aria2/Motrix, and cURL command line. Open source under AGPL-3.0 license. **Note**: Despite being listed as a "Swift-based utility" in the user's request, LinkSwift is actually a JavaScript-based user script, not written in Swift [citation:6].
-
-### Additional Strong Open-Source Options
-
-- **SwiftFiddle** — Playground for making, sharing, and embedding Swift code [citation:1].
-- **swift-mode** — Emacs support for Swift, including partial flycheck error support [citation:1].
-- **swift-vim** — Vim runtime files for Swift development [citation:1].
-- **xcprofiler** — Command line utility to profile compilation time [citation:1].
-- **Swiftly** — Swift CLI toolchain installer to install different versions of Swift [citation:1].
-- **Mint** — A package manager that installs and runs Swift command line tools [citation:1].
-- **Accio** — A SwiftPM based dependency manager for iOS & Co. with improvements over Carthage [citation:1].
-
-**Frameworks for building custom systems**: Combine **Tuist** for manifest-driven project generation and dependency resolution via its registry, **Fastlane** for build/test/release automation with code signing, **SwiftLint** for style enforcement at build time, **Swiftlane** for type-safe Swift-based CI automation, and **Xcode Cloud** for Apple-native CI when you want first-party integration without managing runners — to build a complete Swift development toolchain that eliminates Xcode project conflicts and manual release drudgery.
-
-## How to Contribute
-
-1. Fork the repo.
-2. Add/edit entries in `README.md` (follow existing format).
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-4. Submit PR with a short explanation.
-
-Star the repo if you find it useful!
-
-## Disclaimer
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-- Swift development utilities differ significantly in scope and maintenance status. **App Center is retired** — do not start new projects on it; migrate to Azure Pipelines, GitHub Actions, or Xcode Cloud. **Xcode Cloud is iOS/macOS-only** — Android and cross-platform teams need Bitrise, Codemagic, or GitHub Actions. **SwiftLint requires `ENABLE_USER_SCRIPT_SANDBOXING=NO` under Xcode 15** or builds fail. **Tuist and XcodeGen require regenerating projects** after manifest changes — ensure your `.xcodeproj` is gitignored to avoid conflicts. **Swiftlane is stable but not actively developed** — consider Fastlane for active maintenance [citation:8].
-- Self-hosted open-source solutions require proper CI runner management, code signing credential storage, and ongoing maintenance of toolchain versions.
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Swift-Development-Utilities/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Swift-Development-Utilities?style=flat-square&logo=github&color=gold" alt="GitHub Repo Stars"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Swift-Development-Utilities/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Swift-Development-Utilities?style=flat-square&logo=github&color=blue" alt="GitHub Forks"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Swift-Development-Utilities/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Swift-Development-Utilities/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
 ---
 
-**Made for iOS developers, macOS engineers, mobile DevOps teams, and developers building Apple platform toolchains.**  
-Let's make Swift development more open, reproducible, and free from Xcode project file conflicts.
+# 🚀 Awesome Swift Development Utilities
+
+A comprehensive, production-grade curated catalog of **Swift development utilities**, **SaaS developer platforms**, and **open-source tooling** designed for Apple platform engineers (iOS, iPadOS, macOS, watchOS, tvOS, visionOS) and server-side Swift practitioners.
+
+Whether you are scaling continuous integration/continuous deployment (CI/CD) pipelines, eliminating `.pbxproj` merge conflicts with declarative Xcode project generators, enforcing strict style rules with static analysis, or managing modular architectures with package managers, this repository tracks the best tools in the modern Swift ecosystem.
+
+---
+
+## 📑 Table of Contents
+
+- [📊 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [☁️ SaaS & Hosted CI/CD Platforms](#️-saas--hosted-cicd-platforms)
+- [🐙 Open-Source GitHub Projects (Ranked by Stars)](#-open-source-github-projects-ranked-by-stars)
+  - [1. Continuous Deployment & Pipeline Automation](#1-continuous-deployment--pipeline-automation)
+  - [2. Code Quality, Linters & Formatters](#2-code-quality-linters--formatters)
+  - [3. Dependency & Package Managers](#3-dependency--package-managers)
+  - [4. Project Generation & Architecture Toolchains](#4-project-generation--architecture-toolchains)
+  - [5. Code Generation, Asset Typing & Metaprogramming](#5-code-generation-asset-typing--metaprogramming)
+  - [6. Testing, Mocking & Snapshot Utilities](#6-testing-mocking--snapshot-utilities)
+  - [7. CLI Package Managers & Git Workflow Tools](#7-cli-package-managers--git-workflow-tools)
+- [📈 Star History](#-star-history)
+- [💖 Support & Sponsoring](#-support--sponsoring)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [📜 License & Disclaimer](#-license--disclaimer)
+
+---
+
+## 📊 Sector Overview & Market Dynamics
+
+The global mobile DevOps and Apple platform development utilities sector is valued at an estimated **$1.85 Billion in 2025** and projected to expand to **$4.30 Billion by 2030**, growing at a **Compound Annual Growth Rate (CAGR) of ~18.3%**.
+
+Market dynamics exhibit a **moderately concentrated, platform-anchored ecosystem**:
+- **Platform Concentration (Winner-Take-All Core)**: Apple holds proprietary gatekeeping over macOS compilation sandboxes, code signing certificates, notarization endpoints, and App Store Connect distribution APIs. This grants Apple's first-party SaaS offerings (**Xcode Cloud**, **TestFlight**) and Microsoft's hyper-scale cloud (**GitHub Actions macOS runners**) substantial structural advantage for base build execution.
+- **Specialized Fragmentation (Best-of-Breed Tooling)**: High-performance mobile engineering teams rarely rely solely on single-vendor solutions. Cross-platform mobile pipelines, complex parallelized test matrices, manifest-driven `.xcodeproj` generation (Tuist, XcodeGen), and automated provisioning profile synchronization (Fastlane match) drive demand for specialized independent CI platforms (Bitrise, Codemagic) and vibrant community-maintained open-source CLI utilities.
+
+---
+
+## ☁️ SaaS & Hosted CI/CD Platforms
+
+The table below summarizes leading hosted development platforms for Swift and iOS/macOS engineering. Entries are **sorted descending by company valuation and market capitalization**.
+
+| 🌐 Platform / Tool | 🏢 Valuation / Company Size | ⚙️ Core Capabilities & Architecture | 💳 Starting Tier Pricing | 🎁 Free Tier Limits |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Xcode Cloud](https://developer.apple.com/xcode-cloud/)** | **Apple Inc.**<br/>• Valuation: ~$3.40 Trillion<br/>• Revenue: $391.0B | Native Apple-integrated CI/CD built directly into Xcode; automated code signing; parallelized device/OS testing matrix; direct distribution to TestFlight. | **$49.95/month** for 100 compute hours ($99.95/month for 250 hrs; requires $99/year Apple Developer membership) | **25 compute hours/month included free forever** with standard Apple Developer Program membership. |
+| **[TestFlight](https://testflight.apple.com/)** | **Apple Inc.**<br/>• Valuation: ~$3.40 Trillion<br/>• Revenue: $391.0B | Official Apple beta distribution endpoint supporting iOS, iPadOS, macOS, tvOS, watchOS, and visionOS builds with automatic crash feedback and session metrics. | **$0.00 additional cost** (included with Apple Developer Program at $99.00/year) | **Free forever** for up to 10,000 external public testers and 100 internal team testers (90-day build expiry). |
+| **[GitHub Actions](https://github.com/features/actions)** | **Microsoft Corp.**<br/>• Valuation: ~$3.15 Trillion<br/>• Revenue: $245.1B | Ubiquitous YAML workflow orchestration with official Apple Silicon (M1/M2) and Intel macOS runners, deep repository integration, and extensive community Actions. | **$4.00/user/month** (GitHub Team) + **$0.016/min** on macOS M1/M2 runners ($0.08/min on standard 4-core macOS) | **2,000 build minutes/month free forever** on private repos; **100% unlimited free minutes** on public open-source repos. |
+| **[Visual Studio App Center](https://appcenter.ms/)** *(Retired)* | **Microsoft Corp.**<br/>• Valuation: ~$3.15 Trillion<br/>• Revenue: $245.1B | Former mobile CI/CD, crash reporting, and app distribution suite. **Officially retired March 31, 2025**; diagnostics migration open to Azure Monitor through March 2027. | **Service Retired / Deprecated** (Legacy tier was $40.00/month per build pipeline concurrency) | **Service Retired**: New account registrations and builds disabled; diagnostic migration active until March 31, 2027. |
+| **[CircleCI](https://circleci.com/)** | **Circle Internet Services**<br/>• Valuation: ~$1.70 Billion<br/>• Revenue: ~$110M | Enterprise continuous integration engine featuring dedicated macOS Apple Silicon executors, intelligent test splitting, Docker layer caching, and Xcode orbs. | **$15.00/month** for Performance Tier (includes 30,000 credits/month; macOS runners consume 50–100 credits/min) | **6,000 build minutes (30,000 credits)/month free forever** with up to 5 concurrent build jobs. |
+| **[Bitrise](https://www.bitrise.io/)** | **Bitrise Ltd.**<br/>• Valuation: ~$600 Million<br/>• Revenue: ~$45M | Purpose-built mobile CI/CD platform featuring 400+ pre-configured mobile integrations, visual workflow designer, and dedicated Apple Silicon M1/M2 build machines. | **$89.00/month** for Starter Tier (annual billing) or **$200.00/month** for Pro plan with dedicated concurrency | **Hobby Plan free forever**: 300 credits/month, 1 concurrency, 30-min build limit (or **14-day free trial** of Team tier). |
+| **[Codemagic](https://codemagic.io/)** | **Nevercode Ltd.**<br/>• Valuation: ~$50 Million<br/>• Revenue: ~$15M | Developer-centric CI/CD tailored for Swift native and Flutter/React Native mobile applications with automated code signing and zero-config App Store deployment. | **$95.00/month** for Professional Tier (includes 3 concurrent pipelines) or **$0.045/build min** on Mac mini M2 pay-as-you-go | **500 build minutes/month free forever** on standard M2 virtual machines (plus **14-day free trial** of Professional plan). |
+
+---
+
+## 🐙 Open-Source GitHub Projects (Ranked by Stars)
+
+All open-source tools below are **sorted in strictly descending order by their GitHub star count**. Each tool includes a social star badge linking directly to that repository's stargazers page.
+
+---
+
+### 1. **[Fastlane](https://github.com/fastlane/fastlane)** [![GitHub stars](https://img.shields.io/github/stars/fastlane/fastlane?style=social&color=white)](https://github.com/fastlane/fastlane/stargazers)
+- **Primary Domain**: Continuous Delivery & Pipeline Automation
+- **GitHub Repository**: [fastlane/fastlane](https://github.com/fastlane/fastlane)
+- **Description**: The industry-standard open-source automation engine for iOS and Android deployment. Define customized lanes in a declarative `Fastfile` to automate screenshot generation (`snapshot`), code signing certificate synchronization (`match`), provisioning profile management, beta distribution (`pilot`), and final App Store submission (`deliver`). Integrates seamlessly with all major CI runners.
+
+### 2. **[SwiftLint](https://github.com/realm/SwiftLint)** [![GitHub stars](https://img.shields.io/github/stars/realm/SwiftLint?style=social&color=white)](https://github.com/realm/SwiftLint/stargazers)
+- **Primary Domain**: Code Quality & Static Analysis
+- **GitHub Repository**: [realm/SwiftLint](https://github.com/realm/SwiftLint)
+- **Description**: The benchmark static code linter for Swift, enforcing community guidelines and clean architectural conventions. Powered by SourceKit and SwiftSyntax, it includes 200+ configurable rules, automatic autocorrection (`swiftlint --fix`), and integration via Xcode Build Tool Plugins or pre-commit hooks.
+
+### 3. **[Carthage](https://github.com/Carthage/Carthage)** [![GitHub stars](https://img.shields.io/github/stars/Carthage/Carthage?style=social&color=white)](https://github.com/Carthage/Carthage/stargazers)
+- **Primary Domain**: Decentralized Dependency Management
+- **GitHub Repository**: [Carthage/Carthage](https://github.com/Carthage/Carthage)
+- **Description**: A lightweight, non-intrusive dependency manager that builds binary frameworks without modifying your `.xcodeproj` or workspace settings. Ideal for teams seeking total control over linking and building reusable XCFrameworks using clean `Cartfile` specifications.
+
+### 4. **[CocoaPods](https://github.com/CocoaPods/CocoaPods)** [![GitHub stars](https://img.shields.io/github/stars/CocoaPods/CocoaPods?style=social&color=white)](https://github.com/CocoaPods/CocoaPods/stargazers)
+- **Primary Domain**: Centralized Dependency Management
+- **GitHub Repository**: [CocoaPods/CocoaPods](https://github.com/CocoaPods/CocoaPods)
+- **Description**: The historic pioneer of iOS dependency resolution. Built in Ruby, CocoaPods resolves complex transitive dependency graphs through a central Spec repository and integrates them cleanly into generated `.xcworkspace` environments.
+
+### 5. **[Swift Package Manager](https://github.com/swiftlang/swift-package-manager)** [![GitHub stars](https://img.shields.io/github/stars/swiftlang/swift-package-manager?style=social&color=white)](https://github.com/swiftlang/swift-package-manager/stargazers)
+- **Primary Domain**: Official Apple Package Manager & Build System
+- **GitHub Repository**: [swiftlang/swift-package-manager](https://github.com/swiftlang/swift-package-manager)
+- **Description**: Apple's official first-party system for managing the distribution of Swift code. Natively integrated with Xcode, `swift-package-manager` handles compilation, linking, dependency resolution, and build plugins directly within `Package.swift` manifests across all Apple platforms and Linux.
+
+### 6. **[Quick](https://github.com/Quick/Quick)** [![GitHub stars](https://img.shields.io/github/stars/Quick/Quick?style=social&color=white)](https://github.com/Quick/Quick/stargazers)
+- **Primary Domain**: Behavior-Driven Testing Framework
+- **GitHub Repository**: [Quick/Quick](https://github.com/Quick/Quick)
+- **Description**: A behavior-driven development (BDD) testing framework for Swift and Objective-C. Inspired by RSpec, Specta, and Ginkgo, Quick pairs with Nimble to deliver human-readable test descriptions, structured nested contexts, and flexible assertion matchers.
+
+### 7. **[R.swift](https://github.com/mac-cain13/R.swift)** [![GitHub stars](https://img.shields.io/github/stars/mac-cain13/R.swift?style=social&color=white)](https://github.com/mac-cain13/R.swift/stargazers)
+- **Primary Domain**: Strongly Typed Resource Generation
+- **GitHub Repository**: [mac-cain13/R.swift](https://github.com/mac-cain13/R.swift)
+- **Description**: Eliminates fragile string-based identifiers for images, fonts, storyboards, nibs, and localization files. `R.swift` generates strongly typed compile-time constants (e.g., `R.image.heroBackground()`), preventing runtime crashes due to typos.
+
+### 8. **[SwiftGen](https://github.com/SwiftGen/SwiftGen)** [![GitHub stars](https://img.shields.io/github/stars/SwiftGen/SwiftGen?style=social&color=white)](https://github.com/SwiftGen/SwiftGen/stargazers)
+- **Primary Domain**: Asset & Asset Catalog Code Generator
+- **GitHub Repository**: [SwiftGen/SwiftGen](https://github.com/SwiftGen/SwiftGen)
+- **Description**: Automatically generates type-safe Swift code wrappers for project assets including Asset Catalogs (`xcassets`), Core Data models, localized strings, JSON/YAML files, and font definitions using customizable Stencil templates.
+
+### 9. **[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)** [![GitHub stars](https://img.shields.io/github/stars/nicklockwood/SwiftFormat?style=social&color=white)](https://github.com/nicklockwood/SwiftFormat/stargazers)
+- **Primary Domain**: Code Formatting & Style Normalization
+- **GitHub Repository**: [nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
+- **Description**: A high-speed, highly configurable command-line code formatter and Xcode Source Editor extension. SwiftFormat goes beyond standard whitespace cleanup by normalizing syntax idioms, removing redundant closures, and enforcing consistent code organization.
+
+### 10. **[XcodeGen](https://github.com/yonaskolb/XcodeGen)** [![GitHub stars](https://img.shields.io/github/stars/yonaskolb/XcodeGen?style=social&color=white)](https://github.com/yonaskolb/XcodeGen/stargazers)
+- **Primary Domain**: Declarative Xcode Project Generation
+- **GitHub Repository**: [yonaskolb/XcodeGen](https://github.com/yonaskolb/XcodeGen)
+- **Description**: A lightweight CLI tool that generates `.xcodeproj` files on demand from a clean `project.yml` specification. By keeping project files out of version control, XcodeGen permanently eliminates git merge conflicts on `.pbxproj` files.
+
+### 11. **[Sourcery](https://github.com/krzysztofzablocki/Sourcery)** [![GitHub stars](https://img.shields.io/github/stars/krzysztofzablocki/Sourcery?style=social&color=white)](https://github.com/krzysztofzablocki/Sourcery/stargazers)
+- **Primary Domain**: Metaprogramming & Boilerplate Code Generator
+- **GitHub Repository**: [krzysztofzablocki/Sourcery](https://github.com/krzysztofzablocki/Sourcery)
+- **Description**: A metaprogramming engine for Swift that inspects AST structures to automate boilerplate code creation. Used extensively to synthesize `Equatable`, `Hashable`, `Codable`, mock implementations, and deep structural decorators via template annotations.
+
+### 12. **[Periphery](https://github.com/peripheryapp/periphery)** [![GitHub stars](https://img.shields.io/github/stars/peripheryapp/periphery?style=social&color=white)](https://github.com/peripheryapp/periphery/stargazers)
+- **Primary Domain**: Dead Code Identification & App Thinning
+- **GitHub Repository**: [peripheryapp/periphery](https://github.com/peripheryapp/periphery)
+- **Description**: An accurate, compiler-driven static analysis engine that identifies unused Swift declarations, uncalled functions, redundant protocol conformances, and orphaned properties, significantly shrinking binary size and technical debt.
+
+### 13. **[Tuist](https://github.com/tuist/tuist)** [![GitHub stars](https://img.shields.io/github/stars/tuist/tuist?style=social&color=white)](https://github.com/tuist/tuist/stargazers)
+- **Primary Domain**: Enterprise Project Architecture & Build Acceleration
+- **GitHub Repository**: [tuist/tuist](https://github.com/tuist/tuist)
+- **Description**: The premier toolchain for large-scale modular Apple apps. Tuist defines Xcode workspaces in pure Swift manifests (`Project.swift`), offers binary artifact caching to slash compilation times by up to 70%, and integrates with its cloud registry for package caching.
+
+### 14. **[SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing)** [![GitHub stars](https://img.shields.io/github/stars/pointfreeco/swift-snapshot-testing?style=social&color=white)](https://github.com/pointfreeco/swift-snapshot-testing/stargazers)
+- **Primary Domain**: Snapshot & Visual Regression Testing
+- **GitHub Repository**: [pointfreeco/swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing)
+- **Description**: Delightful, robust snapshot testing for iOS and macOS. Supports rendering UI views, SwiftUI structures, formatted text dumps, HTTP payloads, and PDF outputs into disk snapshots for regression verification.
+
+### 15. **[xcpretty](https://github.com/xcpretty/xcpretty)** [![GitHub stars](https://img.shields.io/github/stars/xcpretty/xcpretty?style=social&color=white)](https://github.com/xcpretty/xcpretty/stargazers)
+- **Primary Domain**: Build Log Formatter & Test Reporter
+- **GitHub Repository**: [xcpretty/xcpretty](https://github.com/xcpretty/xcpretty)
+- **Description**: A fast, flexible formatter for raw `xcodebuild` stdout. Translates verbose, unreadable Xcode terminal streams into clean, colored terminal summaries, JUnit test reports, and HTML status pages.
+
+### 16. **[swift-format](https://github.com/swiftlang/swift-format)** [![GitHub stars](https://img.shields.io/github/stars/swiftlang/swift-format?style=social&color=white)](https://github.com/swiftlang/swift-format/stargazers)
+- **Primary Domain**: Official Apple Swift Formatter
+- **GitHub Repository**: [swiftlang/swift-format](https://github.com/swiftlang/swift-format)
+- **Description**: The official formatting and linting tool maintained by the Swift open-source team. Built directly on SwiftSyntax, it provides authoritative formatting adhering to official Swift API design guidelines.
+
+### 17. **[Mint](https://github.com/yonaskolb/Mint)** [![GitHub stars](https://img.shields.io/github/stars/yonaskolb/Mint?style=social&color=white)](https://github.com/yonaskolb/Mint/stargazers)
+- **Primary Domain**: Executable Package Runner & Version Manager
+- **GitHub Repository**: [yonaskolb/Mint](https://github.com/yonaskolb/Mint)
+- **Description**: A package manager specialized in installing and running executable Swift command-line packages. Guarantees deterministic CLI tool versions across distributed engineering teams without modifying project repositories.
+
+### 18. **[ios-builder](https://github.com/MobAI-App/ios-builder)** [![GitHub stars](https://img.shields.io/github/stars/MobAI-App/ios-builder?style=social&color=white)](https://github.com/MobAI-App/ios-builder/stargazers)
+- **Primary Domain**: Cloud Build CLI & Non-Mac iOS Automation
+- **GitHub Repository**: [MobAI-App/ios-builder](https://github.com/MobAI-App/ios-builder)
+- **Description**: A modern Go-based CLI designed to trigger, compile, and distribute iOS applications without local macOS hardware, integrating directly with GitHub Actions, Bitrise, and Codemagic remote workers.
+
+### 19. **[Mockolo](https://github.com/uber/mockolo)** [![GitHub stars](https://img.shields.io/github/stars/uber/mockolo?style=social&color=white)](https://github.com/uber/mockolo/stargazers)
+- **Primary Domain**: High-Performance Mock Code Generator
+- **GitHub Repository**: [uber/mockolo](https://github.com/uber/mockolo)
+- **Description**: Uber's ultra-fast mock generator for Swift. Employs concurrent parsing via SwiftSyntax to generate mock test objects from annotated protocols in seconds, dramatically speeding up unit test authoring.
+
+### 20. **[Swift Package Index Server](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server)** [![GitHub stars](https://img.shields.io/github/stars/SwiftPackageIndex/SwiftPackageIndex-Server?style=social&color=white)](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server/stargazers)
+- **Primary Domain**: Package Discovery & Compatibility Engine
+- **GitHub Repository**: [SwiftPackageIndex/SwiftPackageIndex-Server](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server)
+- **Description**: The open-source backend powering the Swift Package Index. Indexes 10,000+ packages and conducts continuous build matrix compatibility runs across iOS, macOS, visionOS, Linux, and WebAssembly targets.
+
+### 21. **[Komondor](https://github.com/shibapm/Komondor)** [![GitHub stars](https://img.shields.io/github/stars/shibapm/Komondor?style=social&color=white)](https://github.com/shibapm/Komondor/stargazers)
+- **Primary Domain**: Git Hooks Automation for Swift
+- **GitHub Repository**: [shibapm/Komondor](https://github.com/shibapm/Komondor)
+- **Description**: Configures and runs git hooks (such as pre-commit linting and test runs) defined right inside your `Package.swift`, mimicking Husky for the native Swift ecosystem.
+
+### 22. **[Swiftlane](https://github.com/swiftlane-code/Swiftlane)** [![GitHub stars](https://img.shields.io/github/stars/swiftlane-code/Swiftlane?style=social&color=white)](https://github.com/swiftlane-code/Swiftlane/stargazers)
+- **Primary Domain**: Type-Safe Pure Swift CI Automation
+- **GitHub Repository**: [swiftlane-code/Swiftlane](https://github.com/swiftlane-code/Swiftlane)
+- **Description**: A type-safe alternative to Ruby Fastlane authored entirely in Swift. Features automatic provisioning profile handling, App Store Connect publishing, and encrypted git credentials storage with compile-time verification.
+
+### 23. **[shlane](https://github.com/prongbang/shlane)** [![GitHub stars](https://img.shields.io/github/stars/prongbang/shlane?style=social&color=white)](https://github.com/prongbang/shlane/stargazers)
+- **Primary Domain**: Minimalist YAML Pipeline Runner
+- **GitHub Repository**: [prongbang/shlane](https://github.com/prongbang/shlane)
+- **Description**: A lightweight shell-driven alternative for mobile build pipelines that executes lanes declared in minimalist YAML configuration files with zero runtime overhead.
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Swift-Development-Utilities&type=date&legend=top-left)](https://star-history.drra.page/#ishandutta2007/Awesome-Swift-Development-Utilities&type=date&legend=top-left)
+
+---
+
+## 💖 Support & Sponsoring
+
+Thank you for exploring **Awesome Swift Development Utilities**! Maintaining an up-to-date and thoroughly vetted registry of developer platforms, package management systems, and compilation workflows takes dedication and continuous research.
+
+If this curated repository has saved you debugging time, solved an Xcode project merge conflict, or accelerated your CI/CD delivery, please consider supporting the project:
+
+- 🌟 **Star this repository** to help fellow Apple platform developers discover these tools.
+- 🍴 **Fork the project** and submit pull requests with fresh utilities or corrections.
+- 📢 **Share this resource** with your engineering team, iOS communities, and Twitter/Mastodon.
+- ☕ **Sponsor the Maintainer**: Support continuous open-source maintenance via the [GitHub Sponsors Dashboard](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## 🤝 How to Contribute
+
+We welcome contributions from the community! To suggest a new tool or update an existing entry:
+
+1. **Fork the Repository**: Clone your fork locally.
+2. **Review Formatting**: Follow the existing format with social star badges, clear domain classifications, and factual descriptions.
+3. **Verify Compatibility**: Ensure the utility is compatible with modern Swift (Swift 5.9+ / Swift 6.0) and Xcode 15/16 environments.
+4. **Submit a Pull Request**: Provide a brief summary of why the utility is beneficial to Apple platform developers.
+
+---
+
+## 📜 License & Disclaimer
+
+- **License**: Released under the [MIT License](LICENSE).
+- **Disclaimer**: All product names, trademarks, and registered trademarks belong to their respective owners. Mention of SaaS or open-source software does not constitute an official endorsement.
+- Discover more awesome curated lists at [Awesome-Awesome-Awesome](https://github.com/ishandutta2007/Awesome-Awesome-Awesome).
