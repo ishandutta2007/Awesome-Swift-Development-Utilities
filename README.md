@@ -69,121 +69,121 @@ The table below summarizes leading hosted development platforms for Swift and iO
 
 ## 🐙 Open-Source GitHub Projects (Ranked by Stars)
 
-All open-source tools below are **sorted in strictly descending order by their GitHub star count**. Each tool includes a social star badge linking directly to that repository's stargazers page.
+All open-source tools below are **sorted in strictly descending order by their GitHub Stars_Count**. Each tool includes a social Stars_Badge linking directly to that repository's stargazers page.
 
 ---
 
-### 1. **[Fastlane](https://github.com/fastlane/fastlane)** [![GitHub stars](https://img.shields.io/github/stars/fastlane/fastlane?style=social&color=white)](https://github.com/fastlane/fastlane/stargazers)
+### 1. **[Fastlane](https://github.com/fastlane/fastlane)** [![GitHub_Stars](https://img.shields.io/github/stars/fastlane/fastlane?style=social&color=white)](https://github.com/fastlane/fastlane/stargazers)
 - **Primary Domain**: Continuous Delivery & Pipeline Automation
 - **GitHub Repository**: [fastlane/fastlane](https://github.com/fastlane/fastlane)
 - **Description**: The industry-standard open-source automation engine for iOS and Android deployment. Define customized lanes in a declarative `Fastfile` to automate screenshot generation (`snapshot`), code signing certificate synchronization (`match`), provisioning profile management, beta distribution (`pilot`), and final App Store submission (`deliver`). Integrates seamlessly with all major CI runners.
 
-### 2. **[SwiftLint](https://github.com/realm/SwiftLint)** [![GitHub stars](https://img.shields.io/github/stars/realm/SwiftLint?style=social&color=white)](https://github.com/realm/SwiftLint/stargazers)
+### 2. **[SwiftLint](https://github.com/realm/SwiftLint)** [![GitHub_Stars](https://img.shields.io/github/stars/realm/SwiftLint?style=social&color=white)](https://github.com/realm/SwiftLint/stargazers)
 - **Primary Domain**: Code Quality & Static Analysis
 - **GitHub Repository**: [realm/SwiftLint](https://github.com/realm/SwiftLint)
 - **Description**: The benchmark static code linter for Swift, enforcing community guidelines and clean architectural conventions. Powered by SourceKit and SwiftSyntax, it includes 200+ configurable rules, automatic autocorrection (`swiftlint --fix`), and integration via Xcode Build Tool Plugins or pre-commit hooks.
 
-### 3. **[Carthage](https://github.com/Carthage/Carthage)** [![GitHub stars](https://img.shields.io/github/stars/Carthage/Carthage?style=social&color=white)](https://github.com/Carthage/Carthage/stargazers)
+### 3. **[Carthage](https://github.com/Carthage/Carthage)** [![GitHub_Stars](https://img.shields.io/github/stars/Carthage/Carthage?style=social&color=white)](https://github.com/Carthage/Carthage/stargazers)
 - **Primary Domain**: Decentralized Dependency Management
 - **GitHub Repository**: [Carthage/Carthage](https://github.com/Carthage/Carthage)
 - **Description**: A lightweight, non-intrusive dependency manager that builds binary frameworks without modifying your `.xcodeproj` or workspace settings. Ideal for teams seeking total control over linking and building reusable XCFrameworks using clean `Cartfile` specifications.
 
-### 4. **[CocoaPods](https://github.com/CocoaPods/CocoaPods)** [![GitHub stars](https://img.shields.io/github/stars/CocoaPods/CocoaPods?style=social&color=white)](https://github.com/CocoaPods/CocoaPods/stargazers)
+### 4. **[CocoaPods](https://github.com/CocoaPods/CocoaPods)** [![GitHub_Stars](https://img.shields.io/github/stars/CocoaPods/CocoaPods?style=social&color=white)](https://github.com/CocoaPods/CocoaPods/stargazers)
 - **Primary Domain**: Centralized Dependency Management
 - **GitHub Repository**: [CocoaPods/CocoaPods](https://github.com/CocoaPods/CocoaPods)
 - **Description**: The historic pioneer of iOS dependency resolution. Built in Ruby, CocoaPods resolves complex transitive dependency graphs through a central Spec repository and integrates them cleanly into generated `.xcworkspace` environments.
 
-### 5. **[Swift Package Manager](https://github.com/swiftlang/swift-package-manager)** [![GitHub stars](https://img.shields.io/github/stars/swiftlang/swift-package-manager?style=social&color=white)](https://github.com/swiftlang/swift-package-manager/stargazers)
+### 5. **[Swift Package Manager](https://github.com/swiftlang/swift-package-manager)** [![GitHub_Stars](https://img.shields.io/github/stars/swiftlang/swift-package-manager?style=social&color=white)](https://github.com/swiftlang/swift-package-manager/stargazers)
 - **Primary Domain**: Official Apple Package Manager & Build System
 - **GitHub Repository**: [swiftlang/swift-package-manager](https://github.com/swiftlang/swift-package-manager)
 - **Description**: Apple's official first-party system for managing the distribution of Swift code. Natively integrated with Xcode, `swift-package-manager` handles compilation, linking, dependency resolution, and build plugins directly within `Package.swift` manifests across all Apple platforms and Linux.
 
-### 6. **[Quick](https://github.com/Quick/Quick)** [![GitHub stars](https://img.shields.io/github/stars/Quick/Quick?style=social&color=white)](https://github.com/Quick/Quick/stargazers)
+### 6. **[Quick](https://github.com/Quick/Quick)** [![GitHub_Stars](https://img.shields.io/github/stars/Quick/Quick?style=social&color=white)](https://github.com/Quick/Quick/stargazers)
 - **Primary Domain**: Behavior-Driven Testing Framework
 - **GitHub Repository**: [Quick/Quick](https://github.com/Quick/Quick)
 - **Description**: A behavior-driven development (BDD) testing framework for Swift and Objective-C. Inspired by RSpec, Specta, and Ginkgo, Quick pairs with Nimble to deliver human-readable test descriptions, structured nested contexts, and flexible assertion matchers.
 
-### 7. **[R.swift](https://github.com/mac-cain13/R.swift)** [![GitHub stars](https://img.shields.io/github/stars/mac-cain13/R.swift?style=social&color=white)](https://github.com/mac-cain13/R.swift/stargazers)
+### 7. **[R.swift](https://github.com/mac-cain13/R.swift)** [![GitHub_Stars](https://img.shields.io/github/stars/mac-cain13/R.swift?style=social&color=white)](https://github.com/mac-cain13/R.swift/stargazers)
 - **Primary Domain**: Strongly Typed Resource Generation
 - **GitHub Repository**: [mac-cain13/R.swift](https://github.com/mac-cain13/R.swift)
 - **Description**: Eliminates fragile string-based identifiers for images, fonts, storyboards, nibs, and localization files. `R.swift` generates strongly typed compile-time constants (e.g., `R.image.heroBackground()`), preventing runtime crashes due to typos.
 
-### 8. **[SwiftGen](https://github.com/SwiftGen/SwiftGen)** [![GitHub stars](https://img.shields.io/github/stars/SwiftGen/SwiftGen?style=social&color=white)](https://github.com/SwiftGen/SwiftGen/stargazers)
+### 8. **[SwiftGen](https://github.com/SwiftGen/SwiftGen)** [![GitHub_Stars](https://img.shields.io/github/stars/SwiftGen/SwiftGen?style=social&color=white)](https://github.com/SwiftGen/SwiftGen/stargazers)
 - **Primary Domain**: Asset & Asset Catalog Code Generator
 - **GitHub Repository**: [SwiftGen/SwiftGen](https://github.com/SwiftGen/SwiftGen)
 - **Description**: Automatically generates type-safe Swift code wrappers for project assets including Asset Catalogs (`xcassets`), Core Data models, localized strings, JSON/YAML files, and font definitions using customizable Stencil templates.
 
-### 9. **[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)** [![GitHub stars](https://img.shields.io/github/stars/nicklockwood/SwiftFormat?style=social&color=white)](https://github.com/nicklockwood/SwiftFormat/stargazers)
+### 9. **[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)** [![GitHub_Stars](https://img.shields.io/github/stars/nicklockwood/SwiftFormat?style=social&color=white)](https://github.com/nicklockwood/SwiftFormat/stargazers)
 - **Primary Domain**: Code Formatting & Style Normalization
 - **GitHub Repository**: [nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
 - **Description**: A high-speed, highly configurable command-line code formatter and Xcode Source Editor extension. SwiftFormat goes beyond standard whitespace cleanup by normalizing syntax idioms, removing redundant closures, and enforcing consistent code organization.
 
-### 10. **[XcodeGen](https://github.com/yonaskolb/XcodeGen)** [![GitHub stars](https://img.shields.io/github/stars/yonaskolb/XcodeGen?style=social&color=white)](https://github.com/yonaskolb/XcodeGen/stargazers)
+### 10. **[XcodeGen](https://github.com/yonaskolb/XcodeGen)** [![GitHub_Stars](https://img.shields.io/github/stars/yonaskolb/XcodeGen?style=social&color=white)](https://github.com/yonaskolb/XcodeGen/stargazers)
 - **Primary Domain**: Declarative Xcode Project Generation
 - **GitHub Repository**: [yonaskolb/XcodeGen](https://github.com/yonaskolb/XcodeGen)
 - **Description**: A lightweight CLI tool that generates `.xcodeproj` files on demand from a clean `project.yml` specification. By keeping project files out of version control, XcodeGen permanently eliminates git merge conflicts on `.pbxproj` files.
 
-### 11. **[Sourcery](https://github.com/krzysztofzablocki/Sourcery)** [![GitHub stars](https://img.shields.io/github/stars/krzysztofzablocki/Sourcery?style=social&color=white)](https://github.com/krzysztofzablocki/Sourcery/stargazers)
+### 11. **[Sourcery](https://github.com/krzysztofzablocki/Sourcery)** [![GitHub_Stars](https://img.shields.io/github/stars/krzysztofzablocki/Sourcery?style=social&color=white)](https://github.com/krzysztofzablocki/Sourcery/stargazers)
 - **Primary Domain**: Metaprogramming & Boilerplate Code Generator
 - **GitHub Repository**: [krzysztofzablocki/Sourcery](https://github.com/krzysztofzablocki/Sourcery)
 - **Description**: A metaprogramming engine for Swift that inspects AST structures to automate boilerplate code creation. Used extensively to synthesize `Equatable`, `Hashable`, `Codable`, mock implementations, and deep structural decorators via template annotations.
 
-### 12. **[Periphery](https://github.com/peripheryapp/periphery)** [![GitHub stars](https://img.shields.io/github/stars/peripheryapp/periphery?style=social&color=white)](https://github.com/peripheryapp/periphery/stargazers)
+### 12. **[Periphery](https://github.com/peripheryapp/periphery)** [![GitHub_Stars](https://img.shields.io/github/stars/peripheryapp/periphery?style=social&color=white)](https://github.com/peripheryapp/periphery/stargazers)
 - **Primary Domain**: Dead Code Identification & App Thinning
 - **GitHub Repository**: [peripheryapp/periphery](https://github.com/peripheryapp/periphery)
 - **Description**: An accurate, compiler-driven static analysis engine that identifies unused Swift declarations, uncalled functions, redundant protocol conformances, and orphaned properties, significantly shrinking binary size and technical debt.
 
-### 13. **[Tuist](https://github.com/tuist/tuist)** [![GitHub stars](https://img.shields.io/github/stars/tuist/tuist?style=social&color=white)](https://github.com/tuist/tuist/stargazers)
+### 13. **[Tuist](https://github.com/tuist/tuist)** [![GitHub_Stars](https://img.shields.io/github/stars/tuist/tuist?style=social&color=white)](https://github.com/tuist/tuist/stargazers)
 - **Primary Domain**: Enterprise Project Architecture & Build Acceleration
 - **GitHub Repository**: [tuist/tuist](https://github.com/tuist/tuist)
 - **Description**: The premier toolchain for large-scale modular Apple apps. Tuist defines Xcode workspaces in pure Swift manifests (`Project.swift`), offers binary artifact caching to slash compilation times by up to 70%, and integrates with its cloud registry for package caching.
 
-### 14. **[SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing)** [![GitHub stars](https://img.shields.io/github/stars/pointfreeco/swift-snapshot-testing?style=social&color=white)](https://github.com/pointfreeco/swift-snapshot-testing/stargazers)
+### 14. **[SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing)** [![GitHub_Stars](https://img.shields.io/github/stars/pointfreeco/swift-snapshot-testing?style=social&color=white)](https://github.com/pointfreeco/swift-snapshot-testing/stargazers)
 - **Primary Domain**: Snapshot & Visual Regression Testing
 - **GitHub Repository**: [pointfreeco/swift-snapshot-testing](https://github.com/pointfreeco/swift-snapshot-testing)
 - **Description**: Delightful, robust snapshot testing for iOS and macOS. Supports rendering UI views, SwiftUI structures, formatted text dumps, HTTP payloads, and PDF outputs into disk snapshots for regression verification.
 
-### 15. **[xcpretty](https://github.com/xcpretty/xcpretty)** [![GitHub stars](https://img.shields.io/github/stars/xcpretty/xcpretty?style=social&color=white)](https://github.com/xcpretty/xcpretty/stargazers)
+### 15. **[xcpretty](https://github.com/xcpretty/xcpretty)** [![GitHub_Stars](https://img.shields.io/github/stars/xcpretty/xcpretty?style=social&color=white)](https://github.com/xcpretty/xcpretty/stargazers)
 - **Primary Domain**: Build Log Formatter & Test Reporter
 - **GitHub Repository**: [xcpretty/xcpretty](https://github.com/xcpretty/xcpretty)
 - **Description**: A fast, flexible formatter for raw `xcodebuild` stdout. Translates verbose, unreadable Xcode terminal streams into clean, colored terminal summaries, JUnit test reports, and HTML status pages.
 
-### 16. **[swift-format](https://github.com/swiftlang/swift-format)** [![GitHub stars](https://img.shields.io/github/stars/swiftlang/swift-format?style=social&color=white)](https://github.com/swiftlang/swift-format/stargazers)
+### 16. **[swift-format](https://github.com/swiftlang/swift-format)** [![GitHub_Stars](https://img.shields.io/github/stars/swiftlang/swift-format?style=social&color=white)](https://github.com/swiftlang/swift-format/stargazers)
 - **Primary Domain**: Official Apple Swift Formatter
 - **GitHub Repository**: [swiftlang/swift-format](https://github.com/swiftlang/swift-format)
 - **Description**: The official formatting and linting tool maintained by the Swift open-source team. Built directly on SwiftSyntax, it provides authoritative formatting adhering to official Swift API design guidelines.
 
-### 17. **[Mint](https://github.com/yonaskolb/Mint)** [![GitHub stars](https://img.shields.io/github/stars/yonaskolb/Mint?style=social&color=white)](https://github.com/yonaskolb/Mint/stargazers)
+### 17. **[Mint](https://github.com/yonaskolb/Mint)** [![GitHub_Stars](https://img.shields.io/github/stars/yonaskolb/Mint?style=social&color=white)](https://github.com/yonaskolb/Mint/stargazers)
 - **Primary Domain**: Executable Package Runner & Version Manager
 - **GitHub Repository**: [yonaskolb/Mint](https://github.com/yonaskolb/Mint)
 - **Description**: A package manager specialized in installing and running executable Swift command-line packages. Guarantees deterministic CLI tool versions across distributed engineering teams without modifying project repositories.
 
-### 18. **[ios-builder](https://github.com/MobAI-App/ios-builder)** [![GitHub stars](https://img.shields.io/github/stars/MobAI-App/ios-builder?style=social&color=white)](https://github.com/MobAI-App/ios-builder/stargazers)
+### 18. **[ios-builder](https://github.com/MobAI-App/ios-builder)** [![GitHub_Stars](https://img.shields.io/github/stars/MobAI-App/ios-builder?style=social&color=white)](https://github.com/MobAI-App/ios-builder/stargazers)
 - **Primary Domain**: Cloud Build CLI & Non-Mac iOS Automation
 - **GitHub Repository**: [MobAI-App/ios-builder](https://github.com/MobAI-App/ios-builder)
 - **Description**: A modern Go-based CLI designed to trigger, compile, and distribute iOS applications without local macOS hardware, integrating directly with GitHub Actions, Bitrise, and Codemagic remote workers.
 
-### 19. **[Mockolo](https://github.com/uber/mockolo)** [![GitHub stars](https://img.shields.io/github/stars/uber/mockolo?style=social&color=white)](https://github.com/uber/mockolo/stargazers)
+### 19. **[Mockolo](https://github.com/uber/mockolo)** [![GitHub_Stars](https://img.shields.io/github/stars/uber/mockolo?style=social&color=white)](https://github.com/uber/mockolo/stargazers)
 - **Primary Domain**: High-Performance Mock Code Generator
 - **GitHub Repository**: [uber/mockolo](https://github.com/uber/mockolo)
 - **Description**: Uber's ultra-fast mock generator for Swift. Employs concurrent parsing via SwiftSyntax to generate mock test objects from annotated protocols in seconds, dramatically speeding up unit test authoring.
 
-### 20. **[Swift Package Index Server](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server)** [![GitHub stars](https://img.shields.io/github/stars/SwiftPackageIndex/SwiftPackageIndex-Server?style=social&color=white)](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server/stargazers)
+### 20. **[Swift Package Index Server](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server)** [![GitHub_Stars](https://img.shields.io/github/stars/SwiftPackageIndex/SwiftPackageIndex-Server?style=social&color=white)](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server/stargazers)
 - **Primary Domain**: Package Discovery & Compatibility Engine
 - **GitHub Repository**: [SwiftPackageIndex/SwiftPackageIndex-Server](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server)
 - **Description**: The open-source backend powering the Swift Package Index. Indexes 10,000+ packages and conducts continuous build matrix compatibility runs across iOS, macOS, visionOS, Linux, and WebAssembly targets.
 
-### 21. **[Komondor](https://github.com/shibapm/Komondor)** [![GitHub stars](https://img.shields.io/github/stars/shibapm/Komondor?style=social&color=white)](https://github.com/shibapm/Komondor/stargazers)
+### 21. **[Komondor](https://github.com/shibapm/Komondor)** [![GitHub_Stars](https://img.shields.io/github/stars/shibapm/Komondor?style=social&color=white)](https://github.com/shibapm/Komondor/stargazers)
 - **Primary Domain**: Git Hooks Automation for Swift
 - **GitHub Repository**: [shibapm/Komondor](https://github.com/shibapm/Komondor)
 - **Description**: Configures and runs git hooks (such as pre-commit linting and test runs) defined right inside your `Package.swift`, mimicking Husky for the native Swift ecosystem.
 
-### 22. **[Swiftlane](https://github.com/swiftlane-code/Swiftlane)** [![GitHub stars](https://img.shields.io/github/stars/swiftlane-code/Swiftlane?style=social&color=white)](https://github.com/swiftlane-code/Swiftlane/stargazers)
+### 22. **[Swiftlane](https://github.com/swiftlane-code/Swiftlane)** [![GitHub_Stars](https://img.shields.io/github/stars/swiftlane-code/Swiftlane?style=social&color=white)](https://github.com/swiftlane-code/Swiftlane/stargazers)
 - **Primary Domain**: Type-Safe Pure Swift CI Automation
 - **GitHub Repository**: [swiftlane-code/Swiftlane](https://github.com/swiftlane-code/Swiftlane)
 - **Description**: A type-safe alternative to Ruby Fastlane authored entirely in Swift. Features automatic provisioning profile handling, App Store Connect publishing, and encrypted git credentials storage with compile-time verification.
 
-### 23. **[shlane](https://github.com/prongbang/shlane)** [![GitHub stars](https://img.shields.io/github/stars/prongbang/shlane?style=social&color=white)](https://github.com/prongbang/shlane/stargazers)
+### 23. **[shlane](https://github.com/prongbang/shlane)** [![GitHub_Stars](https://img.shields.io/github/stars/prongbang/shlane?style=social&color=white)](https://github.com/prongbang/shlane/stargazers)
 - **Primary Domain**: Minimalist YAML Pipeline Runner
 - **GitHub Repository**: [prongbang/shlane](https://github.com/prongbang/shlane)
 - **Description**: A lightweight shell-driven alternative for mobile build pipelines that executes lanes declared in minimalist YAML configuration files with zero runtime overhead.
@@ -214,7 +214,7 @@ If this curated repository has saved you debugging time, solved an Xcode project
 We welcome contributions from the community! To suggest a new tool or update an existing entry:
 
 1. **Fork the Repository**: Clone your fork locally.
-2. **Review Formatting**: Follow the existing format with social star badges, clear domain classifications, and factual descriptions.
+2. **Review Formatting**: Follow the existing format with social Stars_Badges, clear domain classifications, and factual descriptions.
 3. **Verify Compatibility**: Ensure the utility is compatible with modern Swift (Swift 5.9+ / Swift 6.0) and Xcode 15/16 environments.
 4. **Submit a Pull Request**: Provide a brief summary of why the utility is beneficial to Apple platform developers.
 
