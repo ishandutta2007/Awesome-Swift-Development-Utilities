@@ -2,7 +2,7 @@
 
 # Awesome-Swift-Development-Utilities
 
-# Top Swift Development Utilities Ecosystem
+## Top Swift Development Utilities Ecosystem
 
 **Curated List of SaaS Products & Open-Source GitHub Projects**  
 *Focused on Project Generation, CI/CD Automation & Dependency Management*  
